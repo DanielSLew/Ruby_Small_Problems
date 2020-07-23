@@ -1,0 +1,51 @@
+# Given the code:
+
+items = ['apples', 'corn', 'cabbage', 'wheat']
+
+def gather(items)
+  puts "Let's start gathering food."
+  yield(items)
+  puts "We've finished gathering!"
+end
+
+# Fill out method calls for #gather so they produce the corresponding outputs:
+
+gather(items) do |*produce, grains|
+  puts produce.join(', ')
+  puts grains
+end
+
+# Let's start gathering food.
+# apples, corn, cabbage
+# wheat
+# We've finished gathering!
+
+gather(items) do |fruit, *veg, grain|
+  puts fruit
+  puts veg.join(', ')
+  puts grain
+end
+
+# Let's start gathering food.
+# apples
+# corn, cabbage
+# wheat
+# We've finished gathering!
+
+gather(items) do |fruit, *food|
+  puts fruit
+  puts food.join(', ')
+end
+
+# Let's start gathering food.
+# apples
+# corn, cabbage, wheat
+# We've finished gathering!
+
+gather(items) do |apple, corn, cabbage, wheat|
+  puts "#{apple}, #{corn}, #{cabbage} and #{wheat}"
+end
+
+# Let's start gathering food.
+# apples, corn, cabbage, and wheat
+# We've finished gathering!
